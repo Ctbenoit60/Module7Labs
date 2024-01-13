@@ -1,15 +1,12 @@
-import React, { useState, useContext } from "react";
+import React, { createContext, useContext, useState } from "react";
 
-// Create a context 
-const EmojiContext = React.createContext();
+const EmojiContext = createContext();
 
-// Provide component 
-export const EmojiProvider = ({ children }) => {
-  // State to store the current emoji
-  const [emoji, setEmoji] = useState("😃");
+const EmojiProvider = ({ children }) => {
+  const [emoji, setEmoji] = useState('😃');
 
   const changeMood = () => {
-    setEmoji(prevEmoji => prevEmoji === '😃' ? '🥲' : '😃');
+    setEmoji((prevEmoji) => (prevEmoji === '😃' ? '🥲' : '😃'));
   };
 
   return (
@@ -19,4 +16,12 @@ export const EmojiProvider = ({ children }) => {
   );
 };
 
-export const useEmojiContext = () => useContext(EmojiContext);
+const useEmoji = () => {
+  const context = useContext(EmojiContext);
+  if (!context) {
+    throw new Error("useEmoji must be used within an EmojiProvider");
+  }
+  return context;
+};
+
+export { EmojiProvider, useEmoji };

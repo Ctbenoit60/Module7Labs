@@ -1,16 +1,15 @@
-import { useEmojiContext } from "../context/EmojiContext";
+import React from "react";
+import { useEmoji } from "../context/EmojiContext";
 
 const Emoji = () => {
+  const { emoji, changeMood } = useEmoji();
 
-    // Using the context to get the current emoji and the function to change it
-    const {emoji, changeMood} = useEmojiContext();
-
-    return (
-        <div>
-            <h1>{emoji}</h1>
-            <button onClick={changeMood}>Change Mood</button>
-        </div>
-    )
-}
+  return (
+    <div>
+      <h1>{emoji}</h1>
+      <button onClick={changeMood}>Change Mood</button>
+    </div>
+  );
+};
 
 export default Emoji;

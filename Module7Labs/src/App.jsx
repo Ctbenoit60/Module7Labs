@@ -1,12 +1,16 @@
 import "./App.css";
 import BitcoinRates from "./components/BitcoinRates";
 import Emoji from "./components/Emoji";
+import { EmojiProvider } from "./context/EmojiContext";
 
 function App() {
   return (
     <>
       <BitcoinRates></BitcoinRates>
-      <Emoji></Emoji>
+      <EmojiProvider>
+      {/* Your other components go here */}
+      <Emoji />
+    </EmojiProvider>
     </>
   );
 }
