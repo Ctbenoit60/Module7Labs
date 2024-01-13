@@ -1,13 +1,14 @@
-import './App.css'
-import BitcoinRates from './components/BitcoinRates'
+import "./App.css";
+import BitcoinRates from "./components/BitcoinRates";
+import Emoji from "./components/Emoji";
 
 function App() {
-
   return (
     <>
-     <BitcoinRates></BitcoinRates>
+      <BitcoinRates></BitcoinRates>
+      <Emoji></Emoji>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
