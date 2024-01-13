@@ -8,7 +8,7 @@ function LoginForm() {
   const [userPassword, setUserPassword] = useState("");
   const [submitResult, setSubmitResult] = useState("");
 
-  const { currentUser, handleUpdateUser } = useUserContext();
+  // const { currentUser, handleUpdateUser } = useUserContext();
   const { theme, darkMode } = useContext(MyThemeContext);
 
   const navigate = useNavigate();
@@ -21,18 +21,18 @@ function LoginForm() {
       setSubmitResult("NO");
     } else {
       setSubmitResult("Successful login");
-      handleUpdateUser({ email: userEmail });
+      // handleUpdateUser({ email: userEmail });
       navigate("/dash");
     }
   };
 
-  if (currentUser.email)
-    return (
-      <div className={darkMode ? "dark" : "light"}>
-        <p>Welcome {currentUser.email}!</p>
-        <button onClick={() => handleUpdateUser({})}>Log Out</button>
-      </div>
-    );
+  // if (currentUser.email)
+  //   return (
+  //     <div className={darkMode ? "dark" : "light"}>
+  //       <p>Welcome {currentUser.email}!</p>
+  //       <button onClick={() => handleUpdateUser({})}>Log Out</button>
+  //     </div>
+  //   );
 
   return (
     <div style={{ background: theme.background, color: theme.foreground }}>
