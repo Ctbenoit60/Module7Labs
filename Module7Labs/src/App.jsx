@@ -8,8 +8,8 @@ import AppRoutes from './routes/AppRoutes'
 function App() {
   return (
     <>
-    <NavBar></NavBar>
-      <BitcoinRates></BitcoinRates>
+    <NavBar/>
+      <BitcoinRates/>
       <AppRoutes/>
       <EmojiProvider>
       <Emoji />

@@ -4,65 +4,69 @@ import { MyThemeContext } from "../context/ThemeContext";
 import { useNavigate } from "react-router-dom";
 
 function LoginForm() {
-  const [userEmail, setUserEmail] = useState('')
-  const [userPassword, setUserPassword] = useState('')
-  const [submitResult, setSubmitResult] = useState('')
+  const [userEmail, setUserEmail] = useState("");
+  const [userPassword, setUserPassword] = useState("");
+  const [submitResult, setSubmitResult] = useState("");
 
-  const {currentUser, handleUpdateUser} = useUserContext()
-  const {theme, darkMode} = useContext(MyThemeContext)
+  const { currentUser, handleUpdateUser } = useUserContext();
+  const { theme, darkMode } = useContext(MyThemeContext);
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
-    e.preventDefault()
+    e.preventDefault();
     if (userPassword.length < 5) {
-      setSubmitResult('Password must be at least 5 chars long')
+      setSubmitResult("Password must be at least 5 chars long");
     } else if (userPassword === userEmail) {
-      setSubmitResult('NO')
+      setSubmitResult("NO");
     } else {
-      setSubmitResult('Successful login')
-      handleUpdateUser({ email: userEmail})
-      navigate('/dash')
+      setSubmitResult("Successful login");
+      handleUpdateUser({ email: userEmail });
+      navigate("/dash");
     }
-  }
+  };
 
-  if (currentUser.email) return (
-    <div className={darkMode? 'dark' : 'light'}>
-      <p>Welcome {currentUser.email}!</p>
-      <button onClick={()=> handleUpdateUser({})}>Log Out</button>
-    </div>
-  )
+  if (currentUser.email)
+    return (
+      <div className={darkMode ? "dark" : "light"}>
+        <p>Welcome {currentUser.email}!</p>
+        <button onClick={() => handleUpdateUser({})}>Log Out</button>
+      </div>
+    );
+
   return (
-    <div style={{background:theme.background, color:theme.foreground}}>
+    <div style={{ background: theme.background, color: theme.foreground }}>
+      <h1> Hello Login Page </h1>
+
       <form onSubmit={handleSubmit}>
-        <div className='formRow'>
-          <label>Email Address:
+        <div className="formRow">
+          <label>
+            Email Address:
             {/* Use a controlled form input - value AND onChange */}
-            <input type="email" value={userEmail} name='userEmail'
-              onChange={(e) => setUserEmail(e.target.value)} />
+            <input
+              type="email"
+              value={userEmail}
+              name="userEmail"
+              onChange={(e) => setUserEmail(e.target.value)}
+            />
           </label>
         </div>
         <div className="formRow">
-          <label>Password:
-            <input type='password' value={userPassword} name='userPassword'
-              onChange={(e) => setUserPassword(e.target.value)} />
+          <label>
+            Password:
+            <input
+              type="password"
+              value={userPassword}
+              name="userPassword"
+              onChange={(e) => setUserPassword(e.target.value)}
+            />
           </label>
         </div>
-        
-        {
-          // conditional rendering with ternary
-          // comparison (expression)
-          // ? true block
-          // : false block
-        }
-        {
-          // showButton ? <button disabled={!showButton}>Log In</button> : null
-        }
-        <button >Log In</button>
+        <button>Log In</button>
         <p>{submitResult}</p>
       </form>
     </div>
-  )
+  );
 }
 
-export default LoginForm
+export default LoginForm;
