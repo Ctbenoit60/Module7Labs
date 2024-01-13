@@ -11,7 +11,7 @@ function LoginForm() {
   const {currentUser, handleUpdateUser} = useUserContext()
   const {theme, darkMode} = useContext(MyThemeContext)
 
-  const navigate = useNavigate
+  const navigate = useNavigate()
 
   const handleSubmit = (e) => {
     e.preventDefault()
