@@ -9,8 +9,8 @@ function App() {
   return (
     <>
     <NavBar/>
+    <AppRoutes/>  
       <BitcoinRates/>
-      <AppRoutes/>
       <EmojiProvider>
       <Emoji />
     </EmojiProvider>
